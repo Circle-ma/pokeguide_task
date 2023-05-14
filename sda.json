@@ -1,0 +1,52 @@
+{
+    "good": {
+        "goods_id": 2,
+        "goods_name": "\u53e3\u7f69\u5957",
+        "goods_images": [
+            {
+                "url": "https://orderhk.pokeguide.com/storage/img/goods/4/9332010275ffe76d5bdb046.02877134.jpeg"
+            }
+        ],
+        "is_sold_out": false,
+        "options": [
+            {
+                "option_id": 2,
+                "option_name": "\u5927\u5c0f",
+                "option_values": [
+                    {
+                        "option_value_id": 2,
+                        "option_value_name": "\u5927"
+                    },
+                    {
+                        "option_value_id": 3,
+                        "weight": 1,
+                        "option_value_name": "\u5c0f"
+                    }
+                ]
+            }
+        ],
+        "goods_sku": [
+            {
+                "price": 10,
+                "remaining_inventory": 0,
+                "sku_images": [
+                    {
+                        "url": "https://orderhk.pokeguide.com/storage/img/goods/4/9332010275ffe76d5bdb046.02877134.jpeg"
+                    }
+                ],
+                "price_options": [
+                    {
+                        "id": 16
+                    }
+                ],
+                "sku_option_mappings": [
+                    { "option_id": 2, "option_value_id": 3 },
+                    { "option_id": 3, "option_value_id": 4 },
+                    { "option_id": 4, "option_value_id": 9 }
+                ]
+            }
+        ],
+        "min_price": 10,
+        "max_price": 48
+    }
+}

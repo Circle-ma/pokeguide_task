@@ -1,4 +1,5 @@
 type Sku = {
+    id: number;
     price: number;
     remainingInventory: number;
     image: string;

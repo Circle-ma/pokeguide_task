@@ -8,6 +8,7 @@ type Good = {
     minPrice: number;
     image: string;
     options: Option[];
+    is_sold_out: boolean;
 };
 
 type Option = {
