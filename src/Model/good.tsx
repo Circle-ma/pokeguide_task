@@ -11,7 +11,7 @@ type Good = {
     is_sold_out: boolean;
 };
 
-type Option = {
+export type Option = {
     optionId: number;
     optionName: string;
     optionValues: OptionValue[];

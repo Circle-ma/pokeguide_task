@@ -9,8 +9,11 @@ interface GoodState {
 const useGoodStore = create<GoodState>((set) => ({
     good: null,
     setGood: () => {
-        fetch("https://orderhkuat.pokeguide.com/api/v1/goods/2")
-            .then((response) => response.json())
+        fetch(
+            "https://cors-anywhere.herokuapp.com/https://orderhkuat.pokeguide.com/api/v1/goods/2"
+        )
+            .then((response) => response.text())
+            .then((text) => JSON.parse(text))
             .then((data) => {
                 // Convert data to Good model
                 const goodData = {
