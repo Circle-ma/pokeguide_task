@@ -6,9 +6,11 @@ import Description from "./View/description";
 import Quantity from "./View/quantity";
 import OptionsList from "./View/optionsList";
 import CheckoutButton from "./View/checkoutButton";
+import useMatchedSku from "./ViewModel/matchSku";
 
 function App() {
     const { good, setGood } = useGoodStore();
+    const { matchedSku } = useMatchedSku();
 
     useEffect(() => {
         setGood();
@@ -34,6 +36,7 @@ function App() {
                             name={good?.name}
                             maxPrice={good?.maxPrice}
                             minPrice={good?.minPrice}
+                            sku={matchedSku}
                         />
                         <Quantity />
                         <OptionsList options={good?.options} />

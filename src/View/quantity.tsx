@@ -1,10 +1,11 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { IconButton, Stack, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import useQuantityStore from "../ViewModel/quantity";
 
 export default function Quantity() {
     const { quantity, increase, decrease } = useQuantityStore();
+
     return (
         <>
             <Stack
@@ -23,7 +24,12 @@ export default function Quantity() {
                         <RemoveIcon />
                     </IconButton>
                     {quantity}
-                    <IconButton sx={{ color: "#ffb600" }} onClick={increase}>
+                    <IconButton
+                        sx={{ color: "#ffb600" }}
+                        onClick={() => {
+                            increase();
+                        }}
+                    >
                         <AddIcon />
                     </IconButton>
                 </Typography>
