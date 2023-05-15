@@ -22,7 +22,8 @@ export default function OptionItem({ option }: { option?: Option }) {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newUserOptions = [...userOptions];
-        newUserOptions[option?.optionId - 2] = parseInt(event.target.value);
+        newUserOptions[option?.optionId != null ? option.optionId - 2 : 0] =
+            parseInt(event.target.value);
         setUserOptions(newUserOptions);
         const sku = findMatchingSku(good, newUserOptions);
         console.log(sku);
@@ -44,12 +45,12 @@ export default function OptionItem({ option }: { option?: Option }) {
     }
 
     useEffect(() => {
-        if (matchedSku?.remainingInventory <= 0) {
+        if (matchedSku && matchedSku.remainingInventory <= 0) {
             setIsSoldOut(true);
         } else if (isSoldOut) {
             setIsSoldOut(false);
         }
-    }, [matchedSku]);
+    }, [matchedSku, setIsSoldOut, isSoldOut]);
 
     return (
         <>
