@@ -13,12 +13,14 @@ import useGoodStore from "../Service/fetchData";
 import useMatchedSku from "../ViewModel/matchSku";
 import useSoldOutStore from "../ViewModel/checkSoldOut";
 import { useEffect } from "react";
+import useAvailableStore from "../ViewModel/available";
 
 export default function OptionItem({ option }: { option?: Option }) {
     const { userOptions, setUserOptions } = useUserOptionsStore();
     const { good } = useGoodStore();
     const { setMatchedSku, matchedSku } = useMatchedSku();
     const { isSoldOut, setIsSoldOut } = useSoldOutStore();
+    const { isAvailable, setIsAvailable } = useAvailableStore();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newUserOptions = [...userOptions];
@@ -26,6 +28,17 @@ export default function OptionItem({ option }: { option?: Option }) {
             parseInt(event.target.value);
         setUserOptions(newUserOptions);
         const sku = findMatchingSku(good, newUserOptions);
+        if (
+            sku === undefined &&
+            newUserOptions.length === 3 &&
+            newUserOptions[0] !== null &&
+            newUserOptions[1] !== null &&
+            newUserOptions[2] !== null
+        ) {
+            setIsAvailable(false);
+        } else if (isAvailable === false) {
+            setIsAvailable(true);
+        }
         console.log(sku);
         if (sku !== undefined) {
             setMatchedSku(sku);
@@ -50,7 +63,7 @@ export default function OptionItem({ option }: { option?: Option }) {
         } else if (isSoldOut) {
             setIsSoldOut(false);
         }
-    }, [matchedSku, setIsSoldOut, isSoldOut]);
+    }, [matchedSku]);
 
     return (
         <>
