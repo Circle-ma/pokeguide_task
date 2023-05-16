@@ -13,7 +13,7 @@ import useGoodStore from "../Service/fetchData";
 import useMatchedSku from "../ViewModel/matchSku";
 import useSoldOutStore from "../ViewModel/checkSoldOut";
 import { useEffect } from "react";
-import useAvailableStore from "../ViewModel/available";
+import useAvailableStore, { useChosenStore } from "../ViewModel/available";
 import useQuantityStore from "../ViewModel/quantity";
 
 export default function OptionItem({ option }: { option?: Option }) {
@@ -23,6 +23,7 @@ export default function OptionItem({ option }: { option?: Option }) {
     const { isSoldOut, setIsSoldOut } = useSoldOutStore();
     const { isAvailable, setIsAvailable } = useAvailableStore();
     const { quantity } = useQuantityStore();
+    const { isChosen, setIsChosen } = useChosenStore();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newUserOptions = [...userOptions];
         newUserOptions[option?.optionId != null ? option.optionId - 2 : 0] =
@@ -39,6 +40,17 @@ export default function OptionItem({ option }: { option?: Option }) {
             setIsAvailable(false);
         } else if (isAvailable === false) {
             setIsAvailable(true);
+        }
+
+        if (
+            newUserOptions.length === 3 &&
+            newUserOptions[0] !== null &&
+            newUserOptions[1] !== null &&
+            newUserOptions[2] !== null
+        ) {
+            setIsChosen(true);
+        } else if (isChosen === true) {
+            setIsChosen(false);
         }
         console.log(sku);
         if (sku !== undefined) {

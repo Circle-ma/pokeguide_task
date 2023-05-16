@@ -11,3 +11,13 @@ const useAvailableStore = create<AvailableState>((set) => ({
 }));
 
 export default useAvailableStore;
+
+interface ChosenState {
+    isChosen: boolean | undefined;
+    setIsChosen: (isChosen: boolean) => void;
+}
+
+export const useChosenStore = create<ChosenState>((set) => ({
+    isChosen: false,
+    setIsChosen: (isChosen: boolean) => set({ isChosen: isChosen }),
+}));
