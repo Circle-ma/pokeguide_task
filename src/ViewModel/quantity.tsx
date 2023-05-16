@@ -7,7 +7,7 @@ interface QuantityState {
 }
 
 const useQuantityStore = create<QuantityState>()((set) => ({
-    quantity: 991,
+    quantity: 1,
     increase: () => set((state) => ({ quantity: state.quantity + 1 })),
     decrease: () => set((state) => ({ quantity: state.quantity - 1 })),
 }));
